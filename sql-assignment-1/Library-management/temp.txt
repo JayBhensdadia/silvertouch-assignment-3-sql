@@ -1,0 +1,95 @@
+-- Database: LibraryManagement
+
+-- Table: Books
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY IDENTITY(1,1),
+    Title VARCHAR(100) NOT NULL,
+    Author VARCHAR(50) NOT NULL,
+    Genre VARCHAR(50),
+    PublishedDate DATE,
+);
+
+-- Table: Authors
+CREATE TABLE Authors (
+    AuthorID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    BirthDate DATE,
+    Nationality VARCHAR(50)
+);
+
+-- Table: Users
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    JoinDate DATETIME DEFAULT GETDATE()
+);
+
+-- Table: Loans
+CREATE TABLE Loans (
+    LoanID INT PRIMARY KEY IDENTITY(1,1),
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    BookID INT FOREIGN KEY REFERENCES Books(BookID),
+    LoanDate DATE DEFAULT GETDATE(),
+    ReturnDate DATE,
+    Status VARCHAR(20) DEFAULT 'Active'
+);
+
+-- Table: Categories
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY IDENTITY(1,1),
+    CategoryName VARCHAR(50) NOT NULL,
+    Description TEXT,
+    ShelfLocation VARCHAR(50),
+    CategoryCode VARCHAR(10) UNIQUE NOT NULL
+);
+-----------------------------------------------------------------------------------------
+
+-- Sample data for Books table
+INSERT INTO Books (Title, Author, Genre, PublishedDate)
+VALUES
+    ('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', '1925-04-10'),
+    ('To Kill a Mockingbird', 'Harper Lee', 'Fiction', '1960-07-11'),
+    ('1984', 'George Orwell', 'Dystopian', '1949-06-08'),
+    ('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', '1937-09-21'),
+    ('The Catcher in the Rye', 'J.D. Salinger', 'Coming-of-age', '1951-07-16');
+
+-- Sample data for Authors table
+INSERT INTO Authors (FirstName, LastName, BirthDate, Nationality)
+VALUES
+    ('F. Scott', 'Fitzgerald', '1896-09-24', 'American'),
+    ('Harper', 'Lee', '1926-04-28', 'American'),
+    ('George', 'Orwell', '1903-06-25', 'British'),
+    ('J.R.R.', 'Tolkien', '1892-01-03', 'British'),
+    ('J.D.', 'Salinger', '1919-01-01', 'American');
+
+-- Sample data for Users table
+INSERT INTO Users (FirstName, LastName, Email)
+VALUES
+    ('John', 'Doe', 'john.doe@email.com'),
+    ('Jane', 'Smith', 'jane.smith@email.com'),
+    ('Alex', 'Johnson', 'alex.johnson@email.com'),
+    ('Emma', 'Williams', 'emma.williams@email.com'),
+    ('Michael', 'Brown', 'michael.brown@email.com');
+
+-- Sample data for Loans table
+INSERT INTO Loans (UserID, BookID, LoanDate, ReturnDate, Status)
+VALUES
+    (1, 1, '2022-01-01', '2022-02-01', 'Returned'),
+    (2, 3, '2022-02-10', NULL, 'Active'),
+    (3, 2, '2022-03-15', '2022-04-15', 'Returned'),
+    (4, 4, '2022-04-20', NULL, 'Active'),
+    (5, 5, '2022-05-25', '2022-06-25', 'Returned');
+
+
+
+-- Sample data for Categories table
+INSERT INTO Categories (CategoryName, Description, ShelfLocation, CategoryCode)
+VALUES
+    ('Classic', 'Books that have stood the test of time.', 'A1', 'CL001'),
+    ('Fiction', 'Imaginative or invented stories.', 'B2', 'FI002'),
+    ('Dystopian', 'Books that explore dystopian societies.', 'C3', 'DY003'),
+    ('Fantasy', 'Books set in fantastical worlds.', 'D4', 'FA004'),
+    ('Coming-of-age', 'Stories about characters growing up.', 'E5', 'CO005');

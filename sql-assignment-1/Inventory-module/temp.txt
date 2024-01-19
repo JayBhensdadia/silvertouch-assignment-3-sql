@@ -1,0 +1,98 @@
+-- Database: InventoryModule
+
+
+-- Table: Product
+CREATE TABLE Product (
+    ProductID INT PRIMARY KEY IDENTITY(1,1),
+    ProductName VARCHAR(50) NOT NULL,
+    CategoryID INT,
+    UnitPrice DECIMAL(10,2) DEFAULT NULL,
+    InStockQuantity INT DEFAULT 0,
+   
+);
+
+-- Table: Category
+CREATE TABLE Category (
+    CategoryID INT PRIMARY KEY IDENTITY(1,1),
+    CategoryName VARCHAR(50) NOT NULL,
+    Description TEXT DEFAULT NULL,
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    UpdatedDate DATETIME DEFAULT NULL 
+);
+
+-- Table: Supplier
+CREATE TABLE Supplier (
+    SupplierID INT PRIMARY KEY IDENTITY(1,1),
+    SupplierName VARCHAR(50) NOT NULL,
+    ContactPerson VARCHAR(50) DEFAULT NULL,
+    Email VARCHAR(50) DEFAULT NULL,
+    Phone VARCHAR(15) DEFAULT NULL
+);
+
+-- Table: PurchaseOrder
+CREATE TABLE PurchaseOrder (
+    OrderID INT PRIMARY KEY IDENTITY(1,1),
+    SupplierID INT,
+    OrderDate DATETIME DEFAULT GETDATE(),
+    TotalAmount DECIMAL(12,2) DEFAULT NULL,
+    Status VARCHAR(20) DEFAULT 'Pending'
+);
+
+-- Table: OrderDetail
+CREATE TABLE OrderDetail (
+    DetailID INT PRIMARY KEY IDENTITY(1,1),
+    OrderID INT,
+    ProductID INT,
+    Quantity INT DEFAULT 0,
+    UnitPrice DECIMAL(10,2) DEFAULT NULL,
+    TotalPrice DECIMAL(12,2) DEFAULT NULL
+);
+
+
+
+-------------------------------------------------------------------------
+
+-- Table: Product
+INSERT INTO Product (ProductName, CategoryID, UnitPrice, InStockQuantity)
+VALUES
+    ('Laptop', 1, 899.99, 25),
+    ('Smartphone', 1, 499.99, 100),
+    ('Printer', 2, 199.99, 20),
+    ('Desk Chair', 3, 79.99, 30),
+    ('Desk Lamp', 3, 29.99, 50);
+
+-- Table: Category
+INSERT INTO Category (CategoryName, Description, UpdatedDate)
+VALUES
+    ('Electronics', 'Products related to electronic devices.', GETDATE()),
+    ('Office Supplies', 'Products commonly used in offices.', NULL),
+    ('Furniture', 'Various types of furniture items.', NULL),
+    ('Clothing', 'Clothes and accessories.', NULL),
+    ('Books', 'Books of different genres.', NULL);
+
+-- Table: Supplier
+INSERT INTO Supplier (SupplierName, ContactPerson, Email, Phone)
+VALUES
+    ('ABC Electronics', 'John Doe', 'john.doe@abc.com', '123-456-7890'),
+    ('Office Depot', 'Jane Smith', 'jane.smith@officedepot.com', '987-654-3210'),
+    ('Furniture World', 'Sam Johnson', 'sam.johnson@furnitureworld.com', '111-222-3333'),
+    ('FashionHub', 'Emily White', 'emily.white@fashionhub.com', '444-555-6666'),
+    ('Book Haven', 'Michael Brown', 'michael.brown@bookhaven.com', '777-888-9999');
+
+-- Table: PurchaseOrder
+INSERT INTO PurchaseOrder (SupplierID, OrderDate, TotalAmount, Status)
+VALUES
+    (1, GETDATE(), 1899.90, 'Shipped'),
+    (2, GETDATE(), 999.95, 'Pending'),
+    (3, GETDATE(), 159.98, 'Shipped'),
+    (4, GETDATE(), 89.97, 'Pending'),
+    (5, GETDATE(), 0.00, 'Pending'); 
+
+-- Table: OrderDetail
+INSERT INTO OrderDetail (OrderID, ProductID, Quantity, UnitPrice, TotalPrice)
+VALUES
+    (1, 1, 10, 899.99, 8999.90),
+    (1, 2, 10, 499.99, 4999.90),  
+    (2, 3, 5, 199.99, 999.95),
+    (3, 4, 2, 79.99, 159.98),
+    (4, 5, 3, 29.99, 89.97);

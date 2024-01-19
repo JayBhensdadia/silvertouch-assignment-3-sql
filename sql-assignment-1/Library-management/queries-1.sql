@@ -1,0 +1,45 @@
+
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY IDENTITY(1,1),
+    Title VARCHAR(100) NOT NULL,
+    Author VARCHAR(50) NOT NULL,
+    Genre VARCHAR(50),
+    PublishedDate DATE,
+);
+
+
+CREATE TABLE Authors (
+    AuthorID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    BirthDate DATE,
+    Nationality VARCHAR(50)
+);
+
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    JoinDate DATETIME DEFAULT GETDATE()
+);
+
+
+CREATE TABLE Loans (
+    LoanID INT PRIMARY KEY IDENTITY(1,1),
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    BookID INT FOREIGN KEY REFERENCES Books(BookID),
+    LoanDate DATE DEFAULT GETDATE(),
+    ReturnDate DATE,
+    Status VARCHAR(20) DEFAULT 'Active'
+);
+
+
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY IDENTITY(1,1),
+    CategoryName VARCHAR(50) NOT NULL,
+    Description TEXT,
+    ShelfLocation VARCHAR(50),
+    CategoryCode VARCHAR(10) UNIQUE NOT NULL
+);

@@ -1,0 +1,28 @@
+Data Structure:
+
+DBMS (Database Management System): It refers to a general system for managing databases. DBMS doesn't necessarily enforce a specific structure on the data, and it may not support relationships between tables.
+RDBMS (Relational Database Management System): It is a type of DBMS that organizes data into tables with rows and columns. RDBMS enforces the relational model, where data is stored in tables, and relationships between tables are established using keys.
+
+Data Integrity:
+
+DBMS: While it may provide basic data integrity features, it doesn't enforce relationships between tables or support complex integrity constraints.
+RDBMS: It enforces referential integrity, ensuring that relationships between tables are maintained. This involves the use of primary keys and foreign keys to establish and maintain links between tables.
+
+Data Normalization:
+
+DBMS: It may or may not support normalization. Normalization is a process of organizing data to reduce redundancy and dependency by dividing tables into smaller related tables.
+RDBMS: It typically supports normalization up to a certain level, promoting best practices for data organization and reducing data redundancy.
+Query Language:
+
+DBMS: It uses a data manipulation language (DML) for basic operations on data, but the query language may vary between different systems.
+RDBMS: It uses a standard structured query language (SQL) for defining and manipulating the data. SQL is widely adopted and allows for a standardized way to interact with relational databases.
+
+Scalability:
+
+DBMS: May have limitations in terms of scalability and performance, especially when dealing with large datasets and complex relationships.
+RDBMS: Designed to handle large volumes of data efficiently and provide scalability options. It is well-suited for applications with complex data relationships.
+
+Use Cases:
+
+DBMS: Suitable for small-scale applications or situations where the data structure is simple and relationships are minimal.
+RDBMS: Preferred for applications where data integrity, complex relationships, and scalability are critical, such as in enterprise-level systems.
