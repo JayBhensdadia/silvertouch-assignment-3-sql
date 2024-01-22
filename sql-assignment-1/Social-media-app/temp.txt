@@ -1,0 +1,100 @@
+-- Database: SocialMediaApp
+
+-- Table: Users
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Username VARCHAR(50) UNIQUE NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    BirthDate DATE DEFAULT NULL,
+);
+
+-- Table: Posts
+CREATE TABLE Posts (
+    PostID INT PRIMARY KEY IDENTITY(1,1),
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    Content TEXT NOT NULL,
+    PostDate DATETIME DEFAULT GETDATE(),
+    Likes INT DEFAULT 0,
+    Comments INT DEFAULT 0
+);
+
+-- Table: Friends
+CREATE TABLE Friends (
+    FriendshipID INT PRIMARY KEY IDENTITY(1,1),
+    UserID1 INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID2 INT FOREIGN KEY REFERENCES Users(UserID),
+    FriendshipStatus VARCHAR(20) DEFAULT 'Pending',
+    RequesterUserID INT DEFAULT NULL
+);
+
+-- Table: Comments
+CREATE TABLE Comments (
+    CommentID INT PRIMARY KEY IDENTITY(1,1),
+    PostID INT FOREIGN KEY REFERENCES Posts(PostID),
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    CommentText TEXT NOT NULL,
+    CommentDate DATETIME DEFAULT GETDATE(),
+    Likes INT DEFAULT 0
+);
+
+-- Table: Notifications
+CREATE TABLE Notifications (
+    NotificationID INT PRIMARY KEY IDENTITY(1,1),
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    NotificationText VARCHAR(255) NOT NULL,
+    IsRead BIT DEFAULT 0,
+    NotificationDate DATETIME DEFAULT GETDATE()
+);
+
+
+---------------------------------------------------------------------
+
+
+
+
+-- Table: Users
+INSERT INTO Users (FirstName, LastName, Username, Email, BirthDate)
+VALUES
+    ('Amit', 'Kumar', 'amit_k', 'amit.kumar@email.com', '1990-05-15'),
+    ('Neha', 'Sharma', 'neha_s', 'neha.sharma@email.com', '1988-11-22'),
+    ('Rahul', 'Verma', 'rahul_v', 'rahul.verma@email.com', '1995-07-08'),
+    ('Sneha', 'Gupta', 'sneha_g', 'sneha.gupta@email.com', '1992-02-14'),
+    ('Raj', 'Singh', 'raj_s', 'raj.singh@email.com', '1998-09-30');
+
+-- Table: Posts
+INSERT INTO Posts (UserID, Content, Likes, Comments)
+VALUES
+    (1, 'excited about the weekend trip!', 15, 8),
+    (2, 'look at my new hair cut.', 25, 12),
+    (3, 'joined new company today', 10, 5),
+    (4, 'starbucks is the best', 30, 20),
+    (5, 'only 10% fat in body, i'm fit now!!', 40, 15);
+
+-- Table: Friends
+INSERT INTO Friends (UserID1, UserID2, FriendshipStatus, RequesterUserID)
+VALUES
+    (1, 2, 'Accepted', 1),
+    (1, 3, 'Pending', 3),
+    (2, 3, 'Accepted', 2),
+    (3, 4, 'Pending', 4),
+    (4, 5, 'Pending', 4);
+
+-- Table: Comments
+INSERT INTO Comments (PostID, UserID, CommentText, Likes)
+VALUES
+    (1, 2, 'where to?', 5),
+    (1, 3, 'bring me something..', 8),
+    (2, 1, 'which salon?', 10),
+    (3, 5, 'best of luck', 6),
+    (5, 2, 'great', 12);
+
+-- Table: Notifications
+INSERT INTO Notifications (UserID, NotificationText, IsRead, NotificationDate)
+VALUES
+    (2, 'Amit Kumar accepted your friend request.', 0, GETDATE()),
+    (3, 'Neha Sharma sent you a friend request.', 0, GETDATE()),
+    (4, 'Rahul Verma accepted your friend request.', 0, GETDATE()),
+    (5, 'Sneha Gupta sent you a friend request.', 0, GETDATE()),
+    (1, 'Amit Kumar liked your post.', 0, GETDATE());

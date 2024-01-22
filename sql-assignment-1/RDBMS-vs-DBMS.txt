@@ -1,7 +1,7 @@
 Data Structure:
 
-DBMS (Database Management System): It refers to a general system for managing databases. DBMS doesn't necessarily enforce a specific structure on the data, and it may not support relationships between tables.
-RDBMS (Relational Database Management System): It is a type of DBMS that organizes data into tables with rows and columns. RDBMS enforces the relational model, where data is stored in tables, and relationships between tables are established using keys.
+DBMS : It refers to a general system for managing databases. DBMS doesn't necessarily enforce a specific structure on the data, and it may not support relationships between tables.
+RDBMS: It is a type of DBMS that organizes data into tables with rows and columns. RDBMS enforces the relational model, where data is stored in tables, and relationships between tables are established using keys.
 
 Data Integrity:
 

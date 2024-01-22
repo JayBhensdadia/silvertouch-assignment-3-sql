@@ -1,0 +1,4 @@
+Steps for changing .mdf and .ldf files:
+1.	Create a new database by right clicking on the database.
+2.	Then a dialogue box will show up, it will contain all the details regarding the name and file locations.
+3.	Change the location of data (.mdf) and log (.ldf) files to specific location. 
