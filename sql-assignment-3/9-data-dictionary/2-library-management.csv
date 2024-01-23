@@ -1,0 +1,35 @@
+﻿LibraryManagement,Authors,TBL,001,PK,AuthorID,int(10),NOT NULL,NULL
+LibraryManagement,Authors,TBL,002," ",FirstName,varchar(50),NOT NULL,NULL
+LibraryManagement,Authors,TBL,003," ",LastName,varchar(50),NOT NULL,NULL
+LibraryManagement,Authors,TBL,004," ",BirthDate,date(0),NULL,NULL
+LibraryManagement,Authors,TBL,005," ",Nationality,varchar(50),NULL,NULL
+LibraryManagement,Books,TBL,001,PK,BookID,int(10),NOT NULL,NULL
+LibraryManagement,Books,TBL,002," ",Title,varchar(100),NOT NULL,NULL
+LibraryManagement,Books,TBL,003," ",Author,varchar(50),NOT NULL,NULL
+LibraryManagement,Books,TBL,004," ",Genre,varchar(50),NULL,NULL
+LibraryManagement,Books,TBL,005," ",PublishedDate,date(0),NULL,NULL
+LibraryManagement,BookWithCategory,VW,001," ",BookID,int(10),NOT NULL,NULL
+LibraryManagement,BookWithCategory,VW,002," ",Title,varchar(100),NOT NULL,NULL
+LibraryManagement,BookWithCategory,VW,003," ",Genre,varchar(50),NULL,NULL
+LibraryManagement,BookWithCategory,VW,004," ",Description,text(2147483647),NULL,NULL
+LibraryManagement,BookWithCategory,VW,005," ",ShelfLocation,varchar(50),NULL,NULL
+LibraryManagement,Categories,TBL,001,PK,CategoryID,int(10),NOT NULL,NULL
+LibraryManagement,Categories,TBL,002," ",CategoryName,varchar(50),NOT NULL,NULL
+LibraryManagement,Categories,TBL,003," ",Description,text(2147483647),NULL,NULL
+LibraryManagement,Categories,TBL,004," ",ShelfLocation,varchar(50),NULL,NULL
+LibraryManagement,Categories,TBL,005,UK,CategoryCode,varchar(10),NOT NULL,NULL
+LibraryManagement,Loans,TBL,001,PK,LoanID,int(10),NOT NULL,NULL
+LibraryManagement,Loans,TBL,002,FK,UserID,int(10),NULL,NULL
+LibraryManagement,Loans,TBL,003,FK,BookID,int(10),NULL,NULL
+LibraryManagement,Loans,TBL,004," ",LoanDate,date(0),NULL,NULL
+LibraryManagement,Loans,TBL,005," ",ReturnDate,date(0),NULL,NULL
+LibraryManagement,Loans,TBL,006," ",Status,varchar(20),NULL,NULL
+LibraryManagement,Users,TBL,001,PK,UserID,int(10),NOT NULL,NULL
+LibraryManagement,Users,TBL,002," ",FirstName,varchar(50),NOT NULL,NULL
+LibraryManagement,Users,TBL,003," ",LastName,varchar(50),NOT NULL,NULL
+LibraryManagement,Users,TBL,004,UK,Email,varchar(100),NOT NULL,NULL
+LibraryManagement,Users,TBL,005," ",JoinDate,datetime(3),NULL,NULL
+LibraryManagement,UserWithLoanDetails,VW,001," ",FirstName,varchar(50),NOT NULL,NULL
+LibraryManagement,UserWithLoanDetails,VW,002," ",LastName,varchar(50),NOT NULL,NULL
+LibraryManagement,UserWithLoanDetails,VW,003," ",LoanDate,date(0),NULL,NULL
+LibraryManagement,UserWithLoanDetails,VW,004," ",Status,varchar(20),NULL,NULL

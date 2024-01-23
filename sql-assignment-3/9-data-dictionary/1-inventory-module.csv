@@ -1,0 +1,41 @@
+﻿InventoryModule,Category,TBL,001,PK,CategoryID,int(10),NOT NULL,NULL
+InventoryModule,Category,TBL,002," ",CategoryName,varchar(50),NOT NULL,NULL
+InventoryModule,Category,TBL,003," ",Description,text(2147483647),NULL,NULL
+InventoryModule,Category,TBL,004," ",CreatedDate,datetime(3),NULL,NULL
+InventoryModule,Category,TBL,005," ",UpdatedDate,datetime(3),NULL,NULL
+InventoryModule,OrderDetail,TBL,001,PK,DetailID,int(10),NOT NULL,NULL
+InventoryModule,OrderDetail,TBL,002," ",OrderID,int(10),NULL,NULL
+InventoryModule,OrderDetail,TBL,003," ",ProductID,int(10),NULL,NULL
+InventoryModule,OrderDetail,TBL,004," ",Quantity,int(10),NULL,NULL
+InventoryModule,OrderDetail,TBL,005," ",UnitPrice,"decimal(10,2)",NULL,NULL
+InventoryModule,OrderDetail,TBL,006," ",TotalPrice,"decimal(12,2)",NULL,NULL
+InventoryModule,Product,TBL,001,PK,ProductID,int(10),NOT NULL,NULL
+InventoryModule,Product,TBL,002," ",ProductName,varchar(50),NOT NULL,NULL
+InventoryModule,Product,TBL,003," ",CategoryID,int(10),NULL,NULL
+InventoryModule,Product,TBL,004," ",UnitPrice,"decimal(10,2)",NULL,NULL
+InventoryModule,Product,TBL,005," ",InStockQuantity,int(10),NULL,NULL
+InventoryModule,ProductWithCategory,VW,001," ",ProductID,int(10),NOT NULL,NULL
+InventoryModule,ProductWithCategory,VW,002," ",ProductName,varchar(50),NOT NULL,NULL
+InventoryModule,ProductWithCategory,VW,003," ",CategoryID,int(10),NULL,NULL
+InventoryModule,ProductWithCategory,VW,004," ",CategoryName,varchar(50),NOT NULL,NULL
+InventoryModule,ProductWithCategory,VW,005," ",UnitPrice,"decimal(10,2)",NULL,NULL
+InventoryModule,ProductWithCategory,VW,006," ",InStockQuantity,int(10),NULL,NULL
+InventoryModule,PurchaseOrder,TBL,001,PK,OrderID,int(10),NOT NULL,NULL
+InventoryModule,PurchaseOrder,TBL,002," ",SupplierID,int(10),NULL,NULL
+InventoryModule,PurchaseOrder,TBL,003," ",OrderDate,datetime(3),NULL,NULL
+InventoryModule,PurchaseOrder,TBL,004," ",TotalAmount,"decimal(12,2)",NULL,NULL
+InventoryModule,PurchaseOrder,TBL,005," ",Status,varchar(20),NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,001," ",OrderID,int(10),NOT NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,002," ",SupplierID,int(10),NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,003," ",OrderDate,datetime(3),NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,004," ",TotalAmount,"decimal(12,2)",NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,005," ",Status,varchar(20),NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,006," ",ProductID,int(10),NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,007," ",Quantity,int(10),NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,008," ",UnitPrice,"decimal(10,2)",NULL,NULL
+InventoryModule,PurchaseOrderDetails,VW,009," ",TotalPrice,"decimal(12,2)",NULL,NULL
+InventoryModule,Supplier,TBL,001,PK,SupplierID,int(10),NOT NULL,NULL
+InventoryModule,Supplier,TBL,002," ",SupplierName,varchar(50),NOT NULL,NULL
+InventoryModule,Supplier,TBL,003," ",ContactPerson,varchar(50),NULL,NULL
+InventoryModule,Supplier,TBL,004," ",Email,varchar(50),NULL,NULL
+InventoryModule,Supplier,TBL,005," ",Phone,varchar(15),NULL,NULL

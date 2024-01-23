@@ -1,0 +1,39 @@
+﻿SocialMediaApp,Comments,TBL,001,PK,CommentID,int(10),NOT NULL,NULL
+SocialMediaApp,Comments,TBL,002,FK,PostID,int(10),NULL,NULL
+SocialMediaApp,Comments,TBL,003,FK,UserID,int(10),NULL,NULL
+SocialMediaApp,Comments,TBL,004," ",CommentText,text(2147483647),NOT NULL,NULL
+SocialMediaApp,Comments,TBL,005," ",CommentDate,datetime(3),NULL,NULL
+SocialMediaApp,Comments,TBL,006," ",Likes,int(10),NULL,NULL
+SocialMediaApp,Friends,TBL,001,PK,FriendshipID,int(10),NOT NULL,NULL
+SocialMediaApp,Friends,TBL,002,FK,UserID1,int(10),NULL,NULL
+SocialMediaApp,Friends,TBL,003,FK,UserID2,int(10),NULL,NULL
+SocialMediaApp,Friends,TBL,004," ",FriendshipStatus,varchar(20),NULL,NULL
+SocialMediaApp,Friends,TBL,005," ",RequesterUserID,int(10),NULL,NULL
+SocialMediaApp,Notifications,TBL,001,PK,NotificationID,int(10),NOT NULL,NULL
+SocialMediaApp,Notifications,TBL,002,FK,UserID,int(10),NULL,NULL
+SocialMediaApp,Notifications,TBL,003," ",NotificationText,varchar(255),NOT NULL,NULL
+SocialMediaApp,Notifications,TBL,004," ",IsRead,bit,NULL,NULL
+SocialMediaApp,Notifications,TBL,005," ",NotificationDate,datetime(3),NULL,NULL
+SocialMediaApp,Posts,TBL,001,PK,PostID,int(10),NOT NULL,NULL
+SocialMediaApp,Posts,TBL,002,FK,UserID,int(10),NULL,NULL
+SocialMediaApp,Posts,TBL,003," ",Content,text(2147483647),NOT NULL,NULL
+SocialMediaApp,Posts,TBL,004," ",PostDate,datetime(3),NULL,NULL
+SocialMediaApp,Posts,TBL,005," ",Likes,int(10),NULL,NULL
+SocialMediaApp,Posts,TBL,006," ",Comments,int(10),NULL,NULL
+SocialMediaApp,PostsWithUserDetails,VW,001," ",PostID,int(10),NOT NULL,NULL
+SocialMediaApp,PostsWithUserDetails,VW,002," ",Content,text(2147483647),NOT NULL,NULL
+SocialMediaApp,PostsWithUserDetails,VW,003," ",PostDate,datetime(3),NULL,NULL
+SocialMediaApp,PostsWithUserDetails,VW,004," ",Likes,int(10),NULL,NULL
+SocialMediaApp,PostsWithUserDetails,VW,005," ",Comments,int(10),NULL,NULL
+SocialMediaApp,PostsWithUserDetails,VW,006," ",PostFirstName,varchar(50),NOT NULL,NULL
+SocialMediaApp,PostsWithUserDetails,VW,007," ",PostLastName,varchar(50),NOT NULL,NULL
+SocialMediaApp,PostsWithUserDetails,VW,008," ",PostUsername,varchar(50),NOT NULL,NULL
+SocialMediaApp,PostWithComments,VW,001," ",PostID,int(10),NOT NULL,NULL
+SocialMediaApp,PostWithComments,VW,002," ",Content,text(2147483647),NOT NULL,NULL
+SocialMediaApp,PostWithComments,VW,003," ",CommentText,text(2147483647),NOT NULL,NULL
+SocialMediaApp,Users,TBL,001,PK,UserID,int(10),NOT NULL,NULL
+SocialMediaApp,Users,TBL,002," ",FirstName,varchar(50),NOT NULL,NULL
+SocialMediaApp,Users,TBL,003," ",LastName,varchar(50),NOT NULL,NULL
+SocialMediaApp,Users,TBL,004,UK,Username,varchar(50),NOT NULL,NULL
+SocialMediaApp,Users,TBL,005,UK,Email,varchar(100),NOT NULL,NULL
+SocialMediaApp,Users,TBL,006," ",BirthDate,date(0),NULL,NULL
